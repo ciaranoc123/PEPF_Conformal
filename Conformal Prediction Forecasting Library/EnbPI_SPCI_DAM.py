@@ -22,10 +22,35 @@ import SPCI_class as SPCI
 import torch
 from sklearn.linear_model import LassoLarsIC, Lasso
 from sklearn import preprocessing
-
 import warnings
+import matplotlib.pyplot as plt
 
 
+def plot_quantile_pairs_DAM(dat1):
+    column_names = ['EURPrices+{}_Forecast_10'.format(i) for i in range(0, 23)]
+    Q_10 = dat1[column_names].dropna().stack().reset_index().iloc[:1000]
+    column_names = ['EURPrices+{}_Forecast_90'.format(i) for i in range(0, 23)]
+    Q_90 = dat1[column_names].dropna().stack().reset_index().iloc[:1000]
+    column_names = ['EURPrices+{}'.format(i) for i in range(0, 23)]
+    prices = dat1[column_names].dropna().stack().reset_index().iloc[:1000]
+
+    plt.figure(figsize=(10, 6))
+
+    # Quantile pair Q_10-Q_90
+    plt.plot(Q_10[0], label='Q_10')
+    plt.plot(Q_90[0], label='Q_90')
+    plt.fill_between(np.arange(0, len(prices), 1), Q_10[0], Q_90[0], alpha=0.4)
+
+    # Prices
+    plt.plot(prices[0], color='black', label='Prices', linestyle='--')  # dashed line
+
+    plt.title('DAM 0.1-0.9 Quantile Pair')
+    plt.legend(loc='upper right')
+    plt.xlabel('Prices')
+    plt.ylabel('Hour')
+    plt.ylim(-30, 70)  # Set y-axis limits
+    plt.grid(True)
+    plt.show()
 
 
 def load_data_DAM(file_path):

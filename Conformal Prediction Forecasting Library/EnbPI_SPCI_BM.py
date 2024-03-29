@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import datetime as dt
 from datetime import timedelta as td
 from datetime import datetime
@@ -26,8 +26,32 @@ from sklearn import preprocessing
 import warnings
 
 
-   
 
+def plot_quantile_pairs_BM(dat1):
+    column_names = ['lag_{}y_Forecast_10'.format(i) for i in range(2, 18)]
+    Q_10=dat1[column_names].dropna().stack().reset_index().iloc[:1000]
+    column_names = ['lag_{}y_Forecast_90'.format(i) for i in range(2, 18)]
+    Q_90 = dat1[column_names].dropna().stack().reset_index().iloc[:1000]
+    column_names = ['lag_{}y'.format(i) for i in range(2, 18)]
+    prices = dat1[column_names].dropna().stack().reset_index().iloc[:1000]
+
+    plt.figure(figsize=(10, 6))
+
+    # Quantile pair Q_10-Q_90
+    plt.plot(Q_10[0], label='Q_10')
+    plt.plot(Q_90[0], label='Q_90')
+    plt.fill_between(np.arange(0, len(prices), 1), Q_10[0], Q_90[0], alpha=0.4)
+
+    # Prices
+    plt.plot(prices[0], color='black', label='Prices', linestyle='--')  # dashed line
+
+    plt.title('DAM 0.1-0.9 Quantile Pair')
+    plt.legend(loc='upper right')
+    plt.xlabel('Prices')
+    plt.ylabel('Hour')
+    plt.ylim(-90, 200)  # Set y-axis limits
+    plt.grid(True)
+    plt.show()
 
     
 def load_data_BM(file_path):
