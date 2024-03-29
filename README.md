@@ -71,6 +71,14 @@ The 'Quantile Regression Library' directory contains the main code files used fo
 
 The 'Quantile Regression DAM BM.ipynb' notebook serves as the main file for generating Quantile Forecasts. It imports and utilizes the functions defined in the Python scripts mentioned above.
 
+### Conformal Prediction Forecasting Library
+The 'Conformal Prediction Forecasting Library' directory contains the main code files used for forecasting using EnbPI and SPCI. Below is a list of files included:
+- Conformal Prediction For DAM & BM.ipynb: This is the main notebook file containing code for running different forecasting models.
+- EnbPI_SPCI_BM.py: Python script containing functions related to BM Forecasts for All CP Models.
+- EnbPI_SPCI_DAM.py: Python script containing functions related to DAM Forecasts for All CP Models.
+
+The 'Conformal Prediction For DAM & BM.ipynb' notebook serves as the main file for generating Quantile Forecasts. It imports and utilizes the functions defined in the Python scripts mentioned above.
+
 ### Quantile Trading Strategies
 This repository contains Python scripts and a Jupyter notebook implementing various quantile trading strategies for both the Day-Ahead Market (DAM) and Balancing Market (BM).
 
