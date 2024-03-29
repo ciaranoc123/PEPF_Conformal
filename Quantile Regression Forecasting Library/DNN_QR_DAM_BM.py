@@ -296,7 +296,7 @@ def rolling_walk_forward_validation_DNN_DAM(model, data, targets, start_time, en
             train_end_time = start_time
 
             # Test interval, the test period is always the day ahead forecast
-            test_start_time = train_end_time + td(hours=0)
+            test_start_time = train_end_time + td(hours=24)
             test_end_time = test_start_time + td(hours=1)
 
             print("train_start_time: " + str(train_start_time) + ", train_end_time: " + str(train_end_time) + \
