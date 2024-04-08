@@ -220,7 +220,7 @@ def fit_multitarget_model_EnbPI_DAM(model, X_train, Y_train, X_test, Y_test, act
         SPCI_class_1.fit_bootstrap_models_online_multistep(B = 20, fit_sigmaX=False, stride=stride)
         use_SPCI = False
         smallT = not use_SPCI
-        SPCI_class_1.compute_PIs_Ensemble_online(0.1, smallT=smallT, past_window=2400, use_SPCI=use_SPCI, quantile_regr=False, stride=stride)
+        SPCI_class_1.compute_PIs_Ensemble_online(0.1, smallT=smallT, past_window=300, use_SPCI=use_SPCI, quantile_regr=False, stride=stride)
         Pred_ints_1 = SPCI_class_1.PIs_Ensemble
         model_test_predictions_1=np.array(Pred_ints_1)
         model_test_predictions_1=model_test_predictions_1.reshape(24,2)
@@ -229,7 +229,7 @@ def fit_multitarget_model_EnbPI_DAM(model, X_train, Y_train, X_test, Y_test, act
         SPCI_class_2.fit_bootstrap_models_online_multistep(B = 20, fit_sigmaX=False, stride=stride)
         use_SPCI = False
         smallT = not use_SPCI
-        SPCI_class_2.compute_PIs_Ensemble_online(0.3, smallT=smallT, past_window=2400, use_SPCI=use_SPCI, quantile_regr=False, stride=stride)
+        SPCI_class_2.compute_PIs_Ensemble_online(0.3, smallT=smallT, past_window=300, use_SPCI=use_SPCI, quantile_regr=False, stride=stride)
         Pred_ints_2 = SPCI_class_2.PIs_Ensemble
         model_test_predictions_2=np.array(Pred_ints_2)
         model_test_predictions_2=model_test_predictions_2.reshape(24,2)
@@ -344,7 +344,7 @@ def fit_multitarget_model_SPCI_DAM(model, X_train, Y_train, X_test, Y_test, actu
         SPCI_class_1.fit_bootstrap_models_online_multistep(B = 10, fit_sigmaX=False, stride=stride)
         use_SPCI = True
         smallT = not use_SPCI
-        SPCI_class_1.compute_PIs_Ensemble_online(0.1, smallT=smallT, past_window=365, use_SPCI=use_SPCI, quantile_regr=True, stride=stride)
+        SPCI_class_1.compute_PIs_Ensemble_online(0.1, smallT=smallT, past_window=300, use_SPCI=use_SPCI, quantile_regr=True, stride=stride)
         Pred_ints_1 = SPCI_class_1.PIs_Ensemble
         model_test_predictions_1=np.array(Pred_ints_1)
         model_test_predictions_1=model_test_predictions_1.reshape(24,2)
@@ -353,7 +353,7 @@ def fit_multitarget_model_SPCI_DAM(model, X_train, Y_train, X_test, Y_test, actu
         SPCI_class_2.fit_bootstrap_models_online_multistep(B = 10, fit_sigmaX=False, stride=stride)
         use_SPCI = True
         smallT = not use_SPCI
-        SPCI_class_2.compute_PIs_Ensemble_online(0.3, smallT=smallT, past_window=365, use_SPCI=use_SPCI, quantile_regr=True, stride=stride)
+        SPCI_class_2.compute_PIs_Ensemble_online(0.3, smallT=smallT, past_window=300, use_SPCI=use_SPCI, quantile_regr=True, stride=stride)
         Pred_ints_2 = SPCI_class_2.PIs_Ensemble
         model_test_predictions_2=np.array(Pred_ints_2)
         model_test_predictions_2=model_test_predictions_2.reshape(24,2)
